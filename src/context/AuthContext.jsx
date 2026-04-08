@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 
 export const AuthContext = createContext(null);
 
@@ -33,6 +33,7 @@ export default function AuthProvider({children }) {
             
         }
         setUser(user);
+        localStorage.setItem("currentUserEmail", email);
         return {success: true};
     }
     function logOut () {
@@ -45,4 +46,11 @@ export default function AuthProvider({children }) {
 
     
     );
+}
+            //custom hook to use auth context
+
+export function useAuth() {
+    const context = useContext(AuthContext);
+
+    return context;
 }
