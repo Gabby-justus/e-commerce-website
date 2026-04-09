@@ -8,10 +8,12 @@ import AuthProvider from "./context/AuthContext";
 
 import './App.css';
 import ProductDetails from "./pages/ProductDetails";
+import CartProvider from "./context/CartContext";
 
 function App() {
   return (
     <AuthProvider>
+      <CartProvider>
     <div className="app">
       <Navbar />
       <Routes>
@@ -22,6 +24,7 @@ function App() {
 
       </Routes>
     </div>
+    </CartProvider>
     </AuthProvider>
   );
 }
